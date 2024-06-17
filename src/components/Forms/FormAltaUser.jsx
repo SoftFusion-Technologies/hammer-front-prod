@@ -63,13 +63,17 @@ const FormAltaUser = ({ isOpen, onClose }) => {
         alert("Por favor, complete todos los campos obligatorios.");
       } else {
         // Realizamos la solicitud POST al servidor
-        const respuesta = await fetch("http://localhost:8080/users/", {
-          method: "POST",
-          body: JSON.stringify(valores),
-          headers: {
-            "Content-Type": "application/json",
-          },
-        });
+        // const respuesta = await fetch("http://localhost:8080/users/", { desarrollo
+        const respuesta = await fetch(
+          'https://hammer-back-prod-production.up.railway.app/users/',
+          {
+            method: 'POST',
+            body: JSON.stringify(valores),
+            headers: {
+              'Content-Type': 'application/json'
+            }
+          }
+        );
 
         // Verificamos si la solicitud fue exitosa
         if (!respuesta.ok) {
@@ -78,7 +82,7 @@ const FormAltaUser = ({ isOpen, onClose }) => {
 
         // Convertimos la respuesta a JSON
         const data = await respuesta.json();
-        console.log("Registro insertado correctamente:", data)
+        // console.log("Registro insertado correctamente:", data)
 
         // Mostrar la ventana modal de éxito
         setShowModal(true);

@@ -64,21 +64,24 @@ const FormAltaNotaFam = ({ isOpen, onClose, user }) => {
           }}
           onSubmit={async (values, { resetForm }) => {
             try {
-              const response = await fetch(
-                `http://localhost:8080/integrantesfam/${user.id}`,
-                {
-                  method: 'PUT',
-                  body: JSON.stringify({
-                    notas: values.notas,
-                    precio: parseFloat(values.precio),
-                    descuento: parseFloat(values.descuento),
-                    preciofinal: parseFloat(values.preciofinal)
-                  }),
-                  headers: {
-                    'Content-Type': 'application/json'
-                  }
-                }
-              );
+              // const response = await fetch(
+              //   `http://localhost:8080/integrantesfam/${user.id}`,
+              // desarrollo
+                 const response = await fetch(
+                   `https://hammer-back-prod-production.up.railway.app/integrantesfam/${user.id}`,
+                   {
+                     method: 'PUT',
+                     body: JSON.stringify({
+                       notas: values.notas,
+                       precio: parseFloat(values.precio),
+                       descuento: parseFloat(values.descuento),
+                       preciofinal: parseFloat(values.preciofinal)
+                     }),
+                     headers: {
+                       'Content-Type': 'application/json'
+                     }
+                   }
+                 );
               if (!response.ok) {
                 throw new Error(
                   'Error en la solicitud PUT: ' + response.status

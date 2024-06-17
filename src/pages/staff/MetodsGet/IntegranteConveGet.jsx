@@ -48,9 +48,11 @@ const IntegranteConveGet = ({ integrantes }) => {
   const [search, setSearch] = useState('');
 
   //URL estatica, luego cambiar por variable de entorno
-  const URL = 'http://localhost:8080/integrantes/';
-  const URL2 =`http://localhost:8080/admconvenios/${id_conv}/integrantes/`
+  // const URL = 'http://localhost:8080/integrantes/'; desarollo
+  const URL = 'https://hammer-back-prod-production.up.railway.app/integrantes/';
 
+  // const URL2 =`http://localhost:8080/admconvenios/${id_conv}/integrantes/` DESARROLLO
+  const URL2 = `https://hammer-back-prod-production.up.railway.app/admconvenios/${id_conv}/integrantes/`;
 
   useEffect(() => {
     // utilizamos get para obtenerPersonas los datos contenidos en la url
@@ -74,9 +76,12 @@ const IntegranteConveGet = ({ integrantes }) => {
   useEffect(() => {
     const obtenerIntegrantes = async () => {
       try {
-        const response = await axios.get(
-          `http://localhost:8080/admconvenios/${id_conv}/integrantes/`
-        );
+        // const response = await axios.get(
+        //   `http://localhost:8080/admconvenios/${id_conv}/integrantes/`
+        // ); desarrollo
+         const response = await axios.get(
+           `https://hammer-back-prod-production.up.railway.app/admconvenios/${id_conv}/integrantes/`
+         );
         setIntegrantes(response.data);
       } catch (error) {
         console.error('Error al obtener los integrantes:', error);
@@ -114,7 +119,7 @@ const IntegranteConveGet = ({ integrantes }) => {
       setSelectedUser(resultado);
       setModalUserDetails(true); // Abre el modal de detalles del usuario
     } catch (error) {
-      console.log("Error al obtener el integrante:", error);
+      console.log('Error al obtener el integrante:', error);
     }
   };
   const searcher = (e) => {

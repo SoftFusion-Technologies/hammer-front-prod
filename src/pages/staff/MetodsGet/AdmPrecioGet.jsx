@@ -33,7 +33,7 @@ const AdmPrecioGet = () => {
 
   //URL estatica, luego cambiar por variable de entorno
   // const URL = 'http://localhost:8080/admprecio/'; --desarollo
-  const URL ='https://hammer-back-prod-production.up.railway.app/admprecio/';
+     const URL ='https://hammer-back-prod-production.up.railway.app/admprecio/';
 
   // Estado para almacenar la lista de Task
   const [valores, setValores] = useState([]);

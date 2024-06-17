@@ -37,7 +37,8 @@ const NovedadGet = () => {
   };
 
   //URL estatica, luego cambiar por variable de entorno
-  const URL = 'http://localhost:8080/novedades/'
+  // const URL = 'http://localhost:8080/novedades/' desarrollo 
+  const URL = 'https://hammer-back-prod-production.up.railway.app/novedades/';
 
   // Estado para almacenar la lista de Novedad
   const [novedad, setNovedad] = useState([])

@@ -47,8 +47,11 @@ const FamIntegranteGet = ({ integrantes }) => {
   const [search, setSearch] = useState('');
 
   //URL estatica, luego cambiar por variable de entorno
-  const URL = 'http://localhost:8080/integrantesfam/';
-  const URL2 = `http://localhost:8080/integrantes/${id_integrante}/integrantesfam/`;
+  // const URL = 'http://localhost:8080/integrantesfam/'; desarrollo 
+  const URL = 'https://hammer-back-prod-production.up.railway.app/integrantesfam/';
+
+  // const URL2 = `http://localhost:8080/integrantes/${id_integrante}/integrantesfam/`;
+  const URL2 = `https://hammer-back-prod-production.up.railway.app/integrantes/${id_integrante}/integrantesfam/`;
 
   useEffect(() => {
     // utilizamos get para obtenerPersonas los datos contenidos en la url
@@ -72,8 +75,11 @@ const FamIntegranteGet = ({ integrantes }) => {
   useEffect(() => {
     const obtenerIntegrantes = async () => {
       try {
+        // const response = await axios.get(
+        //   `http://localhost:8080/integrantes/${id_integrante}/integrantesfam/`
+        // ); DESARROLLO
         const response = await axios.get(
-          `http://localhost:8080/integrantes/${id_integrante}/integrantesfam/`
+          `https://hammer-back-prod-production.up.railway.app/integrantes/${id_integrante}/integrantesfam/`
         );
         setIntegrantes(response.data);
       } catch (error) {

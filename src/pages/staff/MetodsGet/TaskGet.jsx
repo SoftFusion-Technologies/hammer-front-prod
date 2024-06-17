@@ -36,7 +36,8 @@ const TaskGet = () => {
 
 
   //URL estatica, luego cambiar por variable de entorno
-  const URL = 'http://localhost:8080/schedulertask/'
+  // const URL = 'http://localhost:8080/schedulertask/' DESARROLLO 
+  const URL = 'https://hammer-back-prod-production.up.railway.app/schedulertask/';
 
   // Estado para almacenar la lista de Task
   const [task, setTask] = useState([])

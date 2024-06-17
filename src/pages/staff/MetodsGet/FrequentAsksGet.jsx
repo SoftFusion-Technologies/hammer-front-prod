@@ -44,7 +44,8 @@ const PreguntasFrecuentesGet = () => {
   };
 
   //URL estatica, luego cambiar por variable de entorno
-  const URL = "http://localhost:8080/ask/";
+  // const URL = "http://localhost:8080/ask/"; desarrollo 
+     const URL = 'https://hammer-back-prod-production.up.railway.app/ask/';
 
   // Estado para almacenar la lista de Novedad
   const [frecAsk, setFreAsk] = useState([]);

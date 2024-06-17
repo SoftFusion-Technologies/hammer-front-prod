@@ -32,7 +32,8 @@ const FreeClassGet = () => {
   const [search, setSearch] = useState('');
 
   //URL estatica, luego cambiar por variable de entorno
-  const URL = 'http://localhost:8080/testclass/';
+  // const URL = 'http://localhost:8080/testclass/'; DESAROLLO
+     const URL = 'https://hammer-back-prod-production.up.railway.app/testclass/';
 
   useEffect(() => {
     // utilizamos get para obtenerPersonas los datos contenidos en la url
