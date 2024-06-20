@@ -39,6 +39,8 @@ const FormAltaIntegranteConve = ({
   const newDescuento = descuento;
   const newPrecioFinal = preciofinal
 
+       const URL ='https://hammer-back-prod-production.up.railway.app/admprecio/';
+
 
   // yup sirve para validar formulario este ya trae sus propias sentencias
   // este esquema de cliente es para utilizar su validacion en los inputs
@@ -49,6 +51,7 @@ const FormAltaIntegranteConve = ({
     trabajo: Yup.string(),
     sede: Yup.string()
   });
+  
 
   const handleSubmitIntegrante = async (valores) => {
     try {
@@ -57,13 +60,16 @@ const FormAltaIntegranteConve = ({
         alert('Por favor, complete todos los campos obligatorios.');
       } else {
         // Realizamos la solicitud POST al servidor
-        const respuesta = await fetch('http://localhost:8080/integrantes/', {
-          method: 'POST',
-          body: JSON.stringify(valores),
-          headers: {
-            'Content-Type': 'application/json'
+        const respuesta = await fetch(
+          'https://hammer-back-prod-production.up.railway.app/integrantes/',
+          {
+            method: 'POST',
+            body: JSON.stringify(valores),
+            headers: {
+              'Content-Type': 'application/json'
+            }
           }
-        });
+        );
 
         // Verificamos si la solicitud fue exitosa
         if (!respuesta.ok) {

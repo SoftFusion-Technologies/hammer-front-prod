@@ -33,9 +33,14 @@ const FamIntegranteGet = ({ integrantes }) => {
   const { id_conv, id_integrante, id_adm } = useParams();
 
   //URL estatica, luego cambiar por variable de entorno
-  const URL = 'http://localhost:8080/integrantesfam/';
-  const URL2 = `http://localhost:8080/admconvenios/${id_conv}/integrantes/${id_integrante}/integrantesfam/`;
+  // const URL = 'http://localhost:8080/integrantesfam/';
+  // const URL2 = `http://localhost:8080/admconvenios/${id_conv}/integrantes/${id_integrante}/integrantesfam/`;
 
+  const URL = 'https://hammer-back-prod-production.up.railway.app/integrantesfam/';
+
+    // const URL2 = `http://localhost:8080/integrantes/${id_integrante}/integrantesfam/`;
+  const URL2 = `https://hammer-back-prod-production.up.railway.app/admconvenios/${id_conv}/integrantes/${id_integrante}/integrantesfam/`;
+  
   // para recuperar los valores de precio FIN
   const URL4 = 'http://localhost:8080/admconvenios/';
 
@@ -140,7 +145,8 @@ const FamIntegranteGet = ({ integrantes }) => {
     const obtenerIntegrantes = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:8080/admconvenios/${id_conv}/integrantes/${id_integrante}/integrantesfam/`
+          // `http://localhost:8080/admconvenios/${id_conv}/integrantes/${id_integrante}/integrantesfam/`
+          `https://hammer-back-prod-production.up.railway.app/admconvenios/${id_conv}/integrantes/${id_integrante}/integrantesfam/`
         );
         setIntegrantes(response.data);
       } catch (error) {

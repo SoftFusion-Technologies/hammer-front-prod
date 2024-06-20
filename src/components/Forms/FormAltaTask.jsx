@@ -52,9 +52,9 @@ const FormAltaTask = ({ isOpen, onClose }) => {
         try {
             let response;
             if (sede === "todas" || sede === "") {
-                response = await axios.get('http://localhost:8080/users');
+                response = await axios.get('https://hammer-back-prod-production.up.railway.app/users');
             } else {
-                response = await axios.get('http://localhost:8080/users', { params: { sede } });
+                response = await axios.get('https://hammer-back-prod-production.up.railway.app/users', { params: { sede } });
             }
             setUsers(response.data);
         } catch (error) {
@@ -72,13 +72,16 @@ const FormAltaTask = ({ isOpen, onClose }) => {
                 alert("Por favor, complete todos los campos obligatorios.");
             } else {
                 // Realizamos la solicitud POST al servidor
-                const respuesta = await fetch("http://localhost:8080/schedulertask/", {
-                    method: "POST",
+                const respuesta = await fetch(
+                  'https://hammer-back-prod-production.up.railway.app/schedulertask/',
+                  {
+                    method: 'POST',
                     body: JSON.stringify(valores),
                     headers: {
-                        "Content-Type": "application/json",
-                    },
-                });
+                      'Content-Type': 'application/json'
+                    }
+                  }
+                );
 
                 // Verificamos si la solicitud fue exitosa
                 if (!respuesta.ok) {

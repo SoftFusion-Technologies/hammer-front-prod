@@ -54,13 +54,16 @@ const FormAltaFrecAsk = ({ isOpen, onClose }) => {
       if (valores.titulo === "" || descripcion === "" || valores.orden === "") {
         alert("Por favor, complete todos los campos obligatorios.");
       } else {
-        const respuesta = await fetch("http://localhost:8080/ask/", {
-          method: "POST",
-          body: JSON.stringify({ ...valores, descripcion }),
-          headers: {
-            "Content-Type": "application/json",
-          },
-        });
+        const respuesta = await fetch(
+          'https://hammer-back-prod-production.up.railway.app/ask/',
+          {
+            method: 'POST',
+            body: JSON.stringify({ ...valores, descripcion }),
+            headers: {
+              'Content-Type': 'application/json'
+            }
+          }
+        );
 
         if (!respuesta.ok) {
           throw new Error("Error en la solicitud POST: " + respuesta.status);

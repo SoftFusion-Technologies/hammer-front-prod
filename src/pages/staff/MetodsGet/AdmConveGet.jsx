@@ -45,7 +45,8 @@ const AdmConveGet = () => {
   const [search, setSearch] = useState("");
 
   //URL estatica, luego cambiar por variable de entorno
-  const URL = "http://localhost:8080/admconvenios/";
+  const URL =
+    "https://hammer-back-prod-production.up.railway.app/admconvenios/";
 
   const handleVerIntegrantes = (id) => {
     setSelectedConve(id);

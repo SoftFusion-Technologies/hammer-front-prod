@@ -48,7 +48,7 @@ const FormAltaConve = ({ isOpen, onClose }) => {
            permiteFam: valores.permiteFam ? 1 : 0
          };
         // Realizamos la solicitud POST al servidor
-        const respuesta = await fetch('http://localhost:8080/admconvenios/', {
+        const respuesta = await fetch('https://hammer-back-prod-production.up.railway.app/admconvenios/', {
           method: 'POST',
           body: JSON.stringify(valores),
           headers: {

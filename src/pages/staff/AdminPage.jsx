@@ -14,7 +14,8 @@ const AdminPage = () => {
   const [modalDetalleOpen, setModalDetalleOpen] = useState(false);
   const [preguntas, setPreguntas] = useState([]);
   const [preguntaSeleccionada, setPreguntaSeleccionada] = useState(null);
-  const URL = 'http://localhost:8080/ask/';
+  // const URL = 'http://localhost:8080/ask/'; DESARROLLO
+  const URL = 'https://hammer-back-prod-production.up.railway.app/ask/';
 
   const { userLevel } = useAuth();
 

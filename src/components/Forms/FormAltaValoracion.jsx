@@ -47,7 +47,7 @@ const FormAltaValoracion = ({ isOpen, onClose, user }) => {
           onSubmit={async (values, { resetForm }) => {
             try {
               const response = await fetch(
-                `http://localhost:8080/postulantes/${user.id}`,
+                `https://hammer-back-prod-production.up.railway.app/postulantes/${user.id}`,
                 {
                   method: 'PUT',
                   body: JSON.stringify(values),

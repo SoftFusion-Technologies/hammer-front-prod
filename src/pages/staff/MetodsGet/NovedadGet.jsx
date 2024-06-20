@@ -37,7 +37,8 @@ const NovedadGet = () => {
   };
 
   //URL estatica, luego cambiar por variable de entorno
-  const URL = "http://localhost:8080/novedades/";
+  // const URL = 'http://localhost:8080/novedades/' desarrollo
+  const URL = 'https://hammer-back-prod-production.up.railway.app/novedades/';
 
   // Estado para almacenar la lista de Novedad
   const [novedad, setNovedad] = useState([]);
@@ -45,7 +46,7 @@ const NovedadGet = () => {
   //------------------------------------------------------
   // 1.3 Relacion al Filtrado - Inicio - Benjamin Orellana
   //------------------------------------------------------
-  const [search, setSearch] = useState("");
+  const [search, setSearch] = useState('');
 
   //Funcion de busqueda, en el cuadro
   const searcher = (e) => {
@@ -82,17 +83,17 @@ const NovedadGet = () => {
       const response = await axios.get(URL);
       setNovedad(response.data);
     } catch (error) {
-      console.log("Error al obtener las novedades:", error);
+      console.log('Error al obtener las novedades:', error);
     }
   };
 
   const handleEliminarNovedad = async (id) => {
-    const confirmacion = window.confirm("¿Seguro que desea eliminar?");
+    const confirmacion = window.confirm('¿Seguro que desea eliminar?');
     if (confirmacion) {
       try {
         const url = `${URL}${id}`;
         const respuesta = await fetch(url, {
-          method: "DELETE",
+          method: 'DELETE'
         });
         await respuesta.json();
 
@@ -186,7 +187,7 @@ const NovedadGet = () => {
             </form>
             {/* formulario de busqueda */}
 
-            {(userLevel === "admin" || userLevel === "administrador") && (
+            {(userLevel === 'admin' || userLevel === 'administrador') && (
               <div className="flex justify-center pb-10">
                 <Link to="#">
                   <button
@@ -202,7 +203,7 @@ const NovedadGet = () => {
 
           {Object.keys(results).length === 0 ? (
             <p className="text-center pb-10">
-              La novedad NO Existe ||{" "}
+              La novedad NO Existe ||{' '}
               <span className="text-span"> Novedad: {results.length}</span>
             </p>
           ) : (
@@ -222,8 +223,8 @@ const NovedadGet = () => {
                       {novedad.mensaje}
                     </p>
                     <div className="flex justify-end space-x-4">
-                      {(userLevel === "admin" ||
-                        userLevel === "administrador") && (
+                      {(userLevel === 'admin' ||
+                        userLevel === 'administrador') && (
                         <div>
                           <button
                             onClick={() => handleEliminarNovedad(novedad.id)}
@@ -244,9 +245,7 @@ const NovedadGet = () => {
                 ))}
               </div>
               <nav className="flex justify-center items-center my-10">
-                <div>
-
-                </div>
+                <div></div>
                 <ul className="pagination bg-white p-5 rounded-lg">
                   <li className="page-item">
                     <a href="#" className="page-link" onClick={prevPage}>
@@ -256,7 +255,7 @@ const NovedadGet = () => {
                   {numbers.map((number, index) => (
                     <li
                       className={`page-item ${
-                        currentPage === number ? "active" : ""
+                        currentPage === number ? 'active' : ''
                       }`}
                       key={index}
                     >

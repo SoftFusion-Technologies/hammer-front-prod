@@ -65,7 +65,7 @@ const FormAltaNotaFam = ({ isOpen, onClose, user }) => {
           onSubmit={async (values, { resetForm }) => {
             try {
               const response = await fetch(
-                `http://localhost:8080/integrantesfam/${user.id}`,
+                `https://hammer-back-prod-production.up.railway.app/integrantesfam/${user.id}`,
                 {
                   method: 'PUT',
                   body: JSON.stringify({

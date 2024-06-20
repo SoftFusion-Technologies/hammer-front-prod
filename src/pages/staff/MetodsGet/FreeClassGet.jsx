@@ -29,10 +29,11 @@ const FreeClassGet = () => {
   const [contactedTestClass, setContactedTestClass] = useState({});
 
   // Estado para almacenar el término de búsqueda
-  const [search, setSearch] = useState("");
+  const [search, setSearch] = useState('');
 
   //URL estatica, luego cambiar por variable de entorno
-  const URL = "http://localhost:8080/testclass/";
+  // const URL = 'http://localhost:8080/testclass/'; DESAROLLO
+  const URL = 'https://hammer-back-prod-production.up.railway.app/testclass/';
 
   useEffect(() => {
     // utilizamos get para obtenerPersonas los datos contenidos en la url
@@ -52,21 +53,21 @@ const FreeClassGet = () => {
       // Obtener el estado de contacto de cada testclass y actualizar el estado
       const contactedData = {};
       testclassData.forEach((test) => {
-        contactedData[test.id] = test.state === "1"; // Convertir a booleano
+        contactedData[test.id] = test.state === '1'; // Convertir a booleano
       });
       setContactedTestClass(contactedData);
     } catch (error) {
-      console.log("Error al obtener las testclass:", error);
+      console.log('Error al obtener las testclass:', error);
     }
   };
 
   const handleEliminarPersonClass = async (id) => {
-    const confirmacion = window.confirm("¿Seguro que desea eliminar?");
+    const confirmacion = window.confirm('¿Seguro que desea eliminar?');
     if (confirmacion) {
       try {
         const url = `${URL}${id}`;
         const respuesta = await fetch(url, {
-          method: "DELETE",
+          method: 'DELETE'
         });
         await respuesta.json();
         const arrayPersonClass = personClass.filter(
@@ -163,19 +164,19 @@ const FreeClassGet = () => {
   // Función para actualizar el estado de contacto en la base de datos
   const updateContactState = async (id, state) => {
     try {
-      await axios.put(`${URL}${id}`, { state: state ? "1" : "0" }); // Cambiado a PUT con el estado correcto
+      await axios.put(`${URL}${id}`, { state: state ? '1' : '0' }); // Cambiado a PUT con el estado correcto
       setContactedTestClass((prevState) => ({
         ...prevState,
-        [id]: state,
+        [id]: state
       }));
     } catch (error) {
-      console.log("Error al actualizar el estado de contacto:", error);
+      console.log('Error al actualizar el estado de contacto:', error);
     }
   };
 
   const contactarTestClass = (celular, id) => {
     const link = `https://api.whatsapp.com/send/?phone=%2B549${celular}&text&type=phone_number&app_absent=0`;
-    const newWindow = window.open(link, "_blank");
+    const newWindow = window.open(link, '_blank');
 
     if (newWindow) {
       const interval = setInterval(async () => {
@@ -200,7 +201,7 @@ const FreeClassGet = () => {
           </div>
           <div className="flex justify-center">
             <h1 className="pb-5">
-              Listado de Personas :{" "}
+              Listado de Personas :{' '}
               <span className="text-center">
                 Cantidad de registros : {results.length}
               </span>
@@ -220,7 +221,7 @@ const FreeClassGet = () => {
 
           {Object.keys(results).length === 0 ? (
             <p className="text-center pb-10">
-              La Persona NO Existe ||{" "}
+              La Persona NO Existe ||{' '}
               <span className="text-span"> Persona: {results.length}</span>
             </p>
           ) : (
@@ -254,8 +255,8 @@ const FreeClassGet = () => {
 
                       {/* ACCIONES */}
 
-                      {(userLevel === "admin" ||
-                        userLevel === "administrador") && (
+                      {(userLevel === 'admin' ||
+                        userLevel === 'administrador') && (
                         <td className="flex space-x-3 px-2">
                           <button
                             onClick={() =>
@@ -276,13 +277,13 @@ const FreeClassGet = () => {
                             type="button"
                             className={`py-2 px-4 my-1 rounded-md text-white ${
                               contactedTestClass[personClass.id]
-                                ? "bg-green-500 hover:bg-green-600"
-                                : "bg-blue-500 hover:bg-blue-600"
+                                ? 'bg-green-500 hover:bg-green-600'
+                                : 'bg-blue-500 hover:bg-blue-600'
                             }`}
                           >
                             {contactedTestClass[personClass.id]
-                              ? "Contactado"
-                              : "Contactar"}
+                              ? 'Contactado'
+                              : 'Contactar'}
                           </button>
                         </td>
                       )}
@@ -300,7 +301,7 @@ const FreeClassGet = () => {
                   {numbers.map((number, index) => (
                     <li
                       className={`page-item ${
-                        currentPage === number ? "active" : ""
+                        currentPage === number ? 'active' : ''
                       }`}
                       key={index}
                     >

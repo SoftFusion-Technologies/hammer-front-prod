@@ -55,7 +55,7 @@ const FormAltaFamiliarI = ({
         alert('Por favor, complete todos los campos obligatorios.');
       } else {
         // Realizamos la solicitud POST al servidor
-        const respuesta = await fetch('http://localhost:8080/integrantesfam/', {
+        const respuesta = await fetch('https://hammer-back-prod-production.up.railway.app/integrantesfam/', {
           method: 'POST',
           body: JSON.stringify(valores),
           headers: {
