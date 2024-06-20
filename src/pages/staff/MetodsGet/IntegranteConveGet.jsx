@@ -36,6 +36,7 @@ const IntegranteConveGet = ({ integrantes }) => {
 
   // Estado para tomar los nombres de los convenios
   const [convenioNombre, setConvenioNombre] = useState('');
+  const [convenioDescripcion, setConvenioDescripcion] = useState('');
 
   // Estado para tomar los valores de permiteFam de los convenios
   const [permiteFam, setpermiteFam] = useState(0);
@@ -108,6 +109,7 @@ const IntegranteConveGet = ({ integrantes }) => {
           `https://hammer-back-prod-production.up.railway.app/admconvenios/${id_conv}`
         );
         setConvenioNombre(response.data.nameConve);
+        setConvenioDescripcion(response.data.descConve);
         setpermiteFam(response.data.permiteFam);
         setcantFam(response.data.cantFamiliares);
       } catch (error) {
@@ -258,6 +260,9 @@ const IntegranteConveGet = ({ integrantes }) => {
             <h2 className="pb-5 font-bignoodle text-[#fc4b08] text-5xl">
               {convenioNombre}
             </h2>
+            <h2 className="pb-5 font-bignoodle text-[#fc4b08] text-2xl ml-28">
+              {convenioDescripcion}
+            </h2>
           </div>
           <div className="flex justify-center">
             <h1 className="pb-5">
@@ -369,8 +374,8 @@ const IntegranteConveGet = ({ integrantes }) => {
                       userLevel === 'convenio' ||
                       */
                         (userLevel === 'admin' ||
-                         userLevel === 'convenio' ||
-                         userLevel === '' ||
+                          userLevel === 'convenio' ||
+                          userLevel === '' ||
                           userLevel === 'administrador') && (
                           <td className="">
                             <button
