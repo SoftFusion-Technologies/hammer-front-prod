@@ -63,17 +63,13 @@ const FormAltaUser = ({ isOpen, onClose }) => {
         alert("Por favor, complete todos los campos obligatorios.");
       } else {
         // Realizamos la solicitud POST al servidor
-        // const respuesta = await fetch("http://localhost:8080/users/", { desarrollo
-        const respuesta = await fetch(
-          'https://hammer-back-prod-production.up.railway.app/users/',
-          {
-            method: 'POST',
-            body: JSON.stringify(valores),
-            headers: {
-              'Content-Type': 'application/json'
-            }
-          }
-        );
+        const respuesta = await fetch("http://localhost:8080/users/", {
+          method: "POST",
+          body: JSON.stringify(valores),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
 
         // Verificamos si la solicitud fue exitosa
         if (!respuesta.ok) {
@@ -82,7 +78,7 @@ const FormAltaUser = ({ isOpen, onClose }) => {
 
         // Convertimos la respuesta a JSON
         const data = await respuesta.json();
-        // console.log("Registro insertado correctamente:", data)
+        console.log("Registro insertado correctamente:", data)
 
         // Mostrar la ventana modal de éxito
         setShowModal(true);
@@ -200,7 +196,7 @@ const FormAltaUser = ({ isOpen, onClose }) => {
                       <option value="" disabled>
                         Tipo de Usuario:
                       </option>
-                    {/* Cambio realizado por Benjamin Orellana 12/06/2024 - INICIO
+                      {/* Cambio realizado por Benjamin Orellana 12/06/2024 - INICIO
                       Se reemplaza el valor del administrador por el de Admin para que pueda tomar el level
                       <option value="administrador">Administrador</option>
                        */}
@@ -210,8 +206,7 @@ const FormAltaUser = ({ isOpen, onClose }) => {
                       {/* Se agrega nuevo rol para que los convenios puedan cargar sus Usuarios */}
                       <option value="convenio">Convenio</option>
 
-                    {/* Cambio realizado por Benjamin Orellana 12/06/2024 - FINAL */}
-
+                      {/* Cambio realizado por Benjamin Orellana 12/06/2024 - FINAL */}
                     </Field>
                     {errors.level && touched.level ? (
                       <Alerta>{errors.level}</Alerta>
@@ -229,8 +224,9 @@ const FormAltaUser = ({ isOpen, onClose }) => {
                       <option value="" disabled>
                         Sede:
                       </option>
-                      <option value="monteros">Monteros</option>
-                      <option value="concepcion">Concepción</option>
+
+                      <option value="Monteros">Monteros</option>
+                      <option value="Concepción">Concepción</option>
                     </Field>
                     {errors.sede && touched.sede ? (
                       <Alerta>{errors.sede}</Alerta>

@@ -51,19 +51,11 @@ const FormAltaTask = ({ isOpen, onClose }) => {
     const obtenerUsers = async (sede) => {
         try {
             let response;
-          if (sede === 'todas' || sede === '') {
-            // response = await axios.get('http://localhost:8080/users'); desarrollo
-            response = await axios.get(
-              'https://hammer-back-prod-production.up.railway.app/users'
-            );
-          } else {
-            response = await axios.get(
-              'https://hammer-back-prod-production.up.railway.app/users',
-              {
-                params: { sede }
-              }
-            );
-          }
+            if (sede === "todas" || sede === "") {
+                response = await axios.get('http://localhost:8080/users');
+            } else {
+                response = await axios.get('http://localhost:8080/users', { params: { sede } });
+            }
             setUsers(response.data);
         } catch (error) {
             console.log('Error al obtener los usuarios:', error);
@@ -95,7 +87,7 @@ const FormAltaTask = ({ isOpen, onClose }) => {
 
                 // Convertimos la respuesta a JSON
                 const data = await respuesta.json();
-                // console.log("Registro insertado correctamente:", data)
+                console.log("Registro insertado correctamente:", data)
 
                 // Mostrar la ventana modal de éxito
                 setShowModal(true);

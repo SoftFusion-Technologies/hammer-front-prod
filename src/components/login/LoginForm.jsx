@@ -48,8 +48,6 @@ const LoginForm = () => {
     }));
   };
 
-  const URL = 'https://hammer-back-prod-production.up.railway.app';
-  
   const handleSubmit = (event) => {
     event.preventDefault();
     const validationErrors = Validation(values);
@@ -59,7 +57,7 @@ const LoginForm = () => {
       setLoading(true);
 
       axios
-        .post(`${URL}/login`, values)
+        .post("http://localhost:8080/login", values)
         .then((res) => {
           if (res.data.message === "Success") {
             login(res.data.token, values.email, res.data.level);
@@ -78,7 +76,7 @@ const LoginForm = () => {
 
   return (
     <div className="h-screen w-full">
-      <div className="dashboardbg h-screen w-full flex justify-between items-center mx-auto">
+      <div className="loginbg h-screen w-full flex justify-between items-center mx-auto">
         <div className="py-5 bg-white rounded-xl mx-auto">
           <form
             className="w-[400px] max-w-[400px] mx-auto max-sm:w-[300px] max-sm:max-w-[300px]"

@@ -23,40 +23,22 @@ import ModalSuccess from './ModalSuccess';
 import ModalError from './ModalError';
 import Alerta from '../Error';
 
-const FormAltaIntegranteConve = ({ isOpen, onClose }) => {
+const FormAltaIntegranteConve = ({
+  isOpen,
+  onClose,
+  precio,
+  descuento,
+  preciofinal
+}) => {
   const [showModal, setShowModal] = useState(false);
   const [errorModal, setErrorModal] = useState(false);
   const { id_conv } = useParams(); // Obtener el id_conv de la URL
 
-  // para recuperar los valores de precio INI
-  // const URL = 'http://localhost:8080/admprecio/'; DESARROLLO
-     const URL = 'https://hammer-back-prod-production.up.railway.app/admprecio/'
-           
-   const [precio, setPrecio] = useState('');
-   const [descuento, setDescuento] = useState('');
-   const [precioFinal, setPrecioFinal] = useState('');
-
-   useEffect(() => {
-     obtenerDatosAdmPrecio();
-   }, []);
-
- const obtenerDatosAdmPrecio = async () => {
-   try {
-     const response = await axios.get(URL);
-     const data = response.data; // Suponiendo que response.data es un objeto con precio, descuento, preciofinal
-
-     // Verifica los datos obtenidos
-     console.log('Datos obtenidos de admprecio:', data);
-
-     setPrecio(data.precio);
-     setDescuento(data.descuento);
-     setPrecioFinal(data.preciofinal);
-   } catch (error) {
-     console.log('Error al obtener datos de admprecio:', error);
-   }
- };
-  // para recuperar los valores de precio FIN 
   const textoModal = 'Integrante creado correctamente.';
+  const newPrecio = precio;
+  const newDescuento = descuento;
+  const newPrecioFinal = preciofinal
+
 
   // yup sirve para validar formulario este ya trae sus propias sentencias
   // este esquema de cliente es para utilizar su validacion en los inputs
@@ -75,17 +57,13 @@ const FormAltaIntegranteConve = ({ isOpen, onClose }) => {
         alert('Por favor, complete todos los campos obligatorios.');
       } else {
         // Realizamos la solicitud POST al servidor
-        // DESARROLLO const respuesta = await fetch('http://localhost:8080/integrantes/', {
-         const respuesta = await fetch(
-           ' https://hammer-back-prod-production.up.railway.app/integrantes/',
-           {
-             method: 'POST',
-             body: JSON.stringify(valores),
-             headers: {
-               'Content-Type': 'application/json'
-             }
-           }
-         );
+        const respuesta = await fetch('http://localhost:8080/integrantes/', {
+          method: 'POST',
+          body: JSON.stringify(valores),
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        });
 
         // Verificamos si la solicitud fue exitosa
         if (!respuesta.ok) {
@@ -94,7 +72,7 @@ const FormAltaIntegranteConve = ({ isOpen, onClose }) => {
 
         // Convertimos la respuesta a JSON
         const data = await respuesta.json();
-        // console.log('Registro insertado correctamente:', data);
+        console.log('Registro insertado correctamente:', data);
 
         // Mostrar la ventana modal de éxito
         setShowModal(true);
@@ -140,9 +118,12 @@ const FormAltaIntegranteConve = ({ isOpen, onClose }) => {
             email: '',
             sede: '',
             notas: '',
-            precio: precio !== null && precio !== undefined ? precio : '',
-            descuento: descuento || '0%', // Asegúrate de que descuento tenga un valor por defecto adecuado si puede ser null
-            preciofinal: precioFinal !== null && precioFinal !== undefined ? precioFinal : ''
+            precio: newPrecio,
+            // precio !== null && precio !== undefined ? precio : '',
+            descuento: newDescuento,
+            // descuento || '0%', // Asegúrate de que descuento tenga un valor por defecto adecuado si puede ser null
+            preciofinal: newPrecioFinal
+            // precioFinal !== null && precioFinal !== undefined ? precioFinal : ''
           }}
           enableReinitialize={!isOpen}
           // cuando hacemos el submit esperamos a que cargen los valores y esos valores tomados se lo pasamos a la funcion handlesubmit que es la que los espera
@@ -246,8 +227,8 @@ const FormAltaIntegranteConve = ({ isOpen, onClose }) => {
                       <option value="" disabled>
                         Sede:
                       </option>
-                      <option value="monteros">Monteros</option>
-                      <option value="concepcion">Concepción</option>
+                      <option value="Monteros">Monteros</option>
+                      <option value="Concepción">Concepción</option>
                     </Field>
                     {errors.sede && touched.sede ? (
                       <Alerta>{errors.sede}</Alerta>

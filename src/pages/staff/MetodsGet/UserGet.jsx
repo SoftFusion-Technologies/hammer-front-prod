@@ -38,8 +38,7 @@ const UserGet = () => {
   };
 
   //URL estatica, luego cambiar por variable de entorno
-  const URL = 'https://hammer-back-prod-production.up.railway.app/users/';
-  // const URL = "http://localhost:8080/users/"; DESARROLLO
+  const URL = "http://localhost:8080/users/";
 
   // Estado para almacenar la lista de users
   const [users, setUsers] = useState([]);
@@ -47,7 +46,7 @@ const UserGet = () => {
   //------------------------------------------------------
   // 1.3 Relacion al Filtrado - Inicio - Benjamin Orellana
   //------------------------------------------------------
-  const [search, setSearch] = useState('');
+  const [search, setSearch] = useState("");
 
   //Funcion de busqueda, en el cuadro
   const searcher = (e) => {
@@ -86,26 +85,26 @@ const UserGet = () => {
       const response = await axios.get(URL);
       setUsers(response.data);
     } catch (error) {
-      console.log('Error al obtener los usuarios:', error);
+      console.log("Error al obtener los usuarios:", error);
     }
   };
 
   const handleEliminarUser = async (id) => {
     const confirmacion = window.confirm('¿Seguro que desea eliminar?');
-    if (confirmacion) {
-      try {
-        const url = `${URL}${id}`;
-        const respuesta = await fetch(url, {
-          method: 'DELETE'
-        });
-        await respuesta.json();
-        const arrayUsers = users.filter((user) => user.id !== id);
+      if (confirmacion) {
+        try {
+          const url = `${URL}${id}`;
+          const respuesta = await fetch(url, {
+            method: 'DELETE'
+          });
+          await respuesta.json();
+          const arrayUsers = users.filter((user) => user.id !== id);
 
-        setUsers(arrayUsers);
-      } catch (error) {
-        console.log(error);
+          setUsers(arrayUsers);
+        } catch (error) {
+          console.log(error);
+        }
       }
-    }
   };
 
   const obtenerUser = async (id) => {
@@ -116,7 +115,7 @@ const UserGet = () => {
       setSelectedUser(resultado);
       setModalUserDetails(true); // Abre el modal de detalles del usuario
     } catch (error) {
-      console.log('Error al obtener el usuario:', error);
+      console.log("Error al obtener el usuario:", error);
     }
   };
 
@@ -197,7 +196,7 @@ const UserGet = () => {
 
           {Object.keys(results).length === 0 ? (
             <p className="text-center pb-10">
-              El Usuario NO Existe ||{' '}
+              El Usuario NO Existe ||{" "}
               <span className="text-span"> Usuario: {results.length}</span>
             </p>
           ) : (
@@ -245,7 +244,7 @@ const UserGet = () => {
                   {numbers.map((number, index) => (
                     <li
                       className={`page-item ${
-                        currentPage === number ? 'active' : ''
+                        currentPage === number ? "active" : ""
                       }`}
                       key={index}
                     >

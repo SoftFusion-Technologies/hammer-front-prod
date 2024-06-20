@@ -54,24 +54,20 @@ const FormAltaFrecAsk = ({ isOpen, onClose }) => {
       if (valores.titulo === "" || descripcion === "" || valores.orden === "") {
         alert("Por favor, complete todos los campos obligatorios.");
       } else {
-        // DESARROLLO const respuesta = await fetch("http://localhost:8080/ask/", {
-         const respuesta = await fetch(
-           ' https://hammer-back-prod-production.up.railway.app/ask/',
-           {
-             method: 'POST',
-             body: JSON.stringify({ ...valores, descripcion }),
-             headers: {
-               'Content-Type': 'application/json'
-             }
-           }
-         );
+        const respuesta = await fetch("http://localhost:8080/ask/", {
+          method: "POST",
+          body: JSON.stringify({ ...valores, descripcion }),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
 
         if (!respuesta.ok) {
           throw new Error("Error en la solicitud POST: " + respuesta.status);
         }
 
         const data = await respuesta.json();
-        // console.log("Registro insertado correctamente:", data);
+        console.log("Registro insertado correctamente:", data);
         setShowModal(true);
         setTimeout(() => {
           setShowModal(false);
