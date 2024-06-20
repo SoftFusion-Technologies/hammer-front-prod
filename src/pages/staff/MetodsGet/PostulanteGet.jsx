@@ -28,7 +28,7 @@ const PostulanteGet = () => {
   const [modalUserDetails, setModalUserDetails] = useState(false); // Estado para controlar el modal de detalles del usuario
 
   //URL estatica, luego cambiar por variable de entorno
-  const URL = "http://localhost:8080/postulantes/";
+  const URL = 'https://hammer-back-prod-production.up.railway.app/postulantes/';
 
   const { userLevel } = useAuth();
 
