@@ -127,7 +127,7 @@ const FormAltaNota = ( {isOpen, onClose, user }) => {
                   />
                   {/* <ErrorMessage name="observaciones" component={Alerta} /> */}
                 </div>
-                {/* <div className="mb-4 px-4">
+                <div className="mb-4 px-4">
                   <Field
                     id="precio"
                     name="precio"
@@ -172,7 +172,7 @@ const FormAltaNota = ( {isOpen, onClose, user }) => {
                     readOnly
                     value={values.preciofinal}
                   />
-                </div> */}
+                </div>
                 <div className="mx-auto flex justify-center my-5">
                   <button
                     type="submit"
