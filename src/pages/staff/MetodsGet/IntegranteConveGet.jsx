@@ -260,9 +260,9 @@ const IntegranteConveGet = ({ integrantes }) => {
             <h2 className="pb-5 font-bignoodle text-[#fc4b08] text-5xl">
               {convenioNombre}
             </h2>
-            <h2 className="pb-5 font-bignoodle text-[#fc4b08] text-2xl ml-28">
+            {/* <h2 className="pb-5 font-bignoodle text-[#fc4b08] text-xl">
               {convenioDescripcion}
-            </h2>
+            </h2> */}
           </div>
           <div className="flex justify-center">
             <h1 className="pb-5">
