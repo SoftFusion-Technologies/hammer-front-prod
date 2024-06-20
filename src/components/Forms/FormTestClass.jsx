@@ -29,7 +29,7 @@ const FormTestClass = ({ isOpen, onClose }) => {
   const [showModal, setShowModal] = useState(false);
   const [errorModal, setErrorModal] = useState(false);
 
-  const textoModal = "Hola, hemos recibimos tu información, ya puedes pasar por nuestras Sedes, a probar tu clase!"
+  const textoModal = "Hola, hemos recibimos tu información, pronto te contactaremos, Saludos!"
   // yup sirve para validar formulario este ya trae sus propias sentencias
   // este esquema de cliente es para utilizar su validacion en los inputs
   const nuevoTestClassSchema = Yup.object().shape({
